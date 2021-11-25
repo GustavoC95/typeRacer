@@ -43,7 +43,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org/academiadecodigo/javabank/App</mainClass>
+                            <mainClass>org/academiadecodigo/speedTyper/Main</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
