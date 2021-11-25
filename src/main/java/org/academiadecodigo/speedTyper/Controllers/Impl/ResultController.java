@@ -1,4 +1,6 @@
 package org.academiadecodigo.speedTyper.Controllers.Impl;
 
-public class ResultController {
+import org.academiadecodigo.speedTyper.Controllers.AbstractController;
+
+public class ResultController extends AbstractController {
 }

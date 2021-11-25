@@ -1,4 +1,6 @@
 package org.academiadecodigo.speedTyper.Controllers.Impl;
 
-public class GameController {
+import org.academiadecodigo.speedTyper.Controllers.AbstractController;
+
+public class GameController extends AbstractController {
 }

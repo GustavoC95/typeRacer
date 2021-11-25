@@ -1,4 +1,6 @@
 package org.academiadecodigo.speedTyper.Controllers.Impl;
 
-public class InstructionController {
+import org.academiadecodigo.speedTyper.Controllers.AbstractController;
+
+public class InstructionController extends AbstractController {
 }
