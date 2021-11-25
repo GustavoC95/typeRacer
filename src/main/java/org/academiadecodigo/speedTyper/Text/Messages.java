@@ -13,6 +13,6 @@ public class Messages {
     public final static String STAR_WARS_2="Do or do not. There is no try. (Yoda, Star Wars)";
     public final static String NARNIA_2="Things never happen the same way twice (Aslan, he Chronicles of Narnia)";
     public final static String MATRIX_2="I don’t like the idea that I’m not in control of my life. (Neo, The Matrix)";
-    
+
     //Se quiser mostrar as mensagens randomly, posso fazer enum com option e mensagens (e a seguir faço random com base no array ou hashmap, mas tenho que ir tendo um set de números já selecionados para não repetir a palavra.
 }
