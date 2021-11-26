@@ -2,7 +2,7 @@ package org.academiadecodigo.speedTyper.Controllers;
 
 import org.academiadecodigo.speedTyper.Views.View;
 
-public class AbstractController implements Controller {
+public abstract class AbstractController implements Controller {
 
     protected View view;
     private Controller nextController;
