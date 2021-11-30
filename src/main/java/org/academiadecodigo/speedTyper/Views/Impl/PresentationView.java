@@ -5,14 +5,19 @@ import org.academiadecodigo.speedTyper.Views.AbstractView;
 
 public class PresentationView extends AbstractView {
 
-    private Picture background;
-
     public PresentationView(){
-        background=new Picture(PADDING,PADDING,"PresentationBackground.png");
+        super();
+        super.setBackground("PresentationBackground.png");
     }
 
     @Override
-    public void show() {
-        background.draw();
+    public void show(){
+        super.show();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        setMoveNext(true);
     }
 }

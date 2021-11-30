@@ -15,14 +15,15 @@ public class IntroductionView extends AbstractView {
 
     public IntroductionView(){
         super();
-        background=new Picture(PADDING,PADDING, "IntroductionBackground.png");
+        super.setBackground( "IntroductionBackground.png");
+        background=super.getBackground();
         Gustavo=new Picture(background.getMaxX()- GUS_SIZE, background.getMaxY()-GUS_SIZE, "Gustavo.png");
         Joana=new Picture(PADDING, background.getMaxY()-JOANA_SIZE, "Joana.png");
     }
 
     @Override
     public void show(){
-        background.draw();
+        super.show();
         Gustavo.draw();
         Joana.draw();
         try {

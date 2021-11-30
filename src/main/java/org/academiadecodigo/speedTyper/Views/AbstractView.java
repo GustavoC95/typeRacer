@@ -1,8 +1,12 @@
 package org.academiadecodigo.speedTyper.Views;
 
+import org.academiadecodigo.simplegraphics.pictures.Picture;
+
 public abstract class AbstractView implements View {
 
     public final static int PADDING=10;
+
+    private Picture background;
 
     private boolean moveNext;
 
@@ -18,6 +22,16 @@ public abstract class AbstractView implements View {
         moveNext=choice;
     }
 
+    public Picture getBackground() {
+        return background;
+    }
+
+    public void setBackground(String path){
+        background=new Picture(PADDING, PADDING, path);
+    }
+
     @Override
-    public abstract void show();
+    public void show(){
+        background.draw();
+    }
 }
