@@ -34,5 +34,5 @@ public abstract class AbstractView implements View {
     public void show(){
         background.draw();
     }
-    
+
 }
