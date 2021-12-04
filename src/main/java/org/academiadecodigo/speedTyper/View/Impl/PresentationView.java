@@ -1,6 +1,7 @@
 package org.academiadecodigo.speedTyper.View.Impl;
 
 import org.academiadecodigo.speedTyper.View.AbstractView;
+import org.academiadecodigo.speedTyper.Waiter;
 
 public class PresentationView extends AbstractView {
 
@@ -12,11 +13,7 @@ public class PresentationView extends AbstractView {
     @Override
     public void show(){
         super.show();
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Waiter.wait(5000);
         setMoveNext(true);
     }
 }
