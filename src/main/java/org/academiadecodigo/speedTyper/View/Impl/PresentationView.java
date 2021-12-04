@@ -6,7 +6,7 @@ public class PresentationView extends AbstractView {
 
     public PresentationView(){
         super();
-        super.setBackground("PresentationBackground.png");
+        super.setBackground("backgrounds/PresentationBackground.png");
     }
 
     @Override

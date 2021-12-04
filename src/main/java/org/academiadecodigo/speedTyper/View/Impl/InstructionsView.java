@@ -1,12 +1,6 @@
 package org.academiadecodigo.speedTyper.View.Impl;
 
-import org.academiadecodigo.simplegraphics.graphics.Canvas;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Text;
-import org.academiadecodigo.speedTyper.Text.Instructions;
 import org.academiadecodigo.speedTyper.View.AbstractView;
-
-import java.awt.*;
 
 public class InstructionsView extends AbstractView {
 
@@ -14,7 +8,7 @@ public class InstructionsView extends AbstractView {
 
     public InstructionsView(){
         super();
-        super.setBackground("InstructionsWithTextEmbedded.png");
+        super.setBackground("backgrounds/InstructionsWithTextEmbedded.png");
         //super.setBackground("InstructionsBackground.png");
 
        /* String[] instructionsText=Instructions.INSTRUCTIONS.split("\n");

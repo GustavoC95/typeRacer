@@ -14,10 +14,10 @@ public class IntroductionView extends AbstractView {
 
     public IntroductionView(){
         super();
-        super.setBackground( "IntroductionBackground.png");
+        super.setBackground("backgrounds/IntroductionBackground.png");
         background=super.getBackground();
-        Gustavo=new Picture(background.getMaxX()- GUS_SIZE, background.getMaxY()-GUS_SIZE, "Gustavo.png");
-        Joana=new Picture(PADDING, background.getMaxY()-JOANA_SIZE, "Joana.png");
+        Gustavo=new Picture(background.getMaxX()- GUS_SIZE, background.getMaxY()-GUS_SIZE, "authors/Gustavo.png");
+        Joana=new Picture(PADDING, background.getMaxY()-JOANA_SIZE, "authors/Joana.png");
     }
 
     @Override

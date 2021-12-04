@@ -6,7 +6,7 @@ public class RegisterView extends AbstractView {
 
     public RegisterView(){
         super();
-        super.setBackground("RegistrationBackground.png");
+        super.setBackground("backgrounds/RegistrationBackground.png");
     }
 
     @Override

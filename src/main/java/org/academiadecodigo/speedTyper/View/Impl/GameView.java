@@ -9,7 +9,7 @@ public class GameView extends AbstractView {
 
     public GameView(){
         super();
-        super.setBackground("GameBackground.png");
+        super.setBackground("backgrounds/GameBackground.png");
 
         cars=new Picture[5];
         loadCars();
@@ -17,11 +17,11 @@ public class GameView extends AbstractView {
 
     private void loadCars(){
 
-        cars[0]=new Picture(PADDING, 300, "RedCar.png");
-        cars[1]=new Picture(PADDING, 390, "YellowCar.png");
-        cars[2]=new Picture(PADDING, 480, "BlueCar.png");
-        cars[3]=new Picture(PADDING, 570, "GreenCar.png");
-        cars[4]=new Picture(PADDING, 660, "PurpleCar.png");
+        cars[0]=new Picture(PADDING, 300, "cars/RedCar.png");
+        cars[1]=new Picture(PADDING, 390, "cars/YellowCar.png");
+        cars[2]=new Picture(PADDING, 480, "cars/BlueCar.png");
+        cars[3]=new Picture(PADDING, 570, "cars/GreenCar.png");
+        cars[4]=new Picture(PADDING, 660, "cars/PurpleCar.png");
 
     }
 
