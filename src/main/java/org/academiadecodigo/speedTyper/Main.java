@@ -1,6 +1,7 @@
 package org.academiadecodigo.speedTyper;
 
 
+import org.academiadecodigo.speedTyper.View.Impl.InstructionsView;
 import org.academiadecodigo.speedTyper.View.Impl.IntroductionView;
 import org.academiadecodigo.speedTyper.View.Impl.PresentationView;
 import org.academiadecodigo.speedTyper.View.Impl.RegisterView;
@@ -15,6 +16,8 @@ public class Main {
         //presentation.show();
         //RegisterView registration=new RegisterView();
         //registration.show();
+        InstructionsView instructions=new InstructionsView();
+        instructions.show();
 
     }
 
