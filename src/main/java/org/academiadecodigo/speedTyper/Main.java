@@ -15,8 +15,10 @@ public class Main {
         //registration.show();
         //InstructionsView instructions=new InstructionsView();
         //instructions.show();
-        GameView game=new GameView();
-        game.show();
+        //GameView game=new GameView();
+        //game.show();
+        EndView end=new EndView();
+        end.show();
 
     }
 
