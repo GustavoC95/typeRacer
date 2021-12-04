@@ -23,7 +23,6 @@ public class Server {
     - Comparação entre palavra escrita e frase
     - Contagem de tempo e comparação entre tempos
     - Print dos nomes dos jogadores + translate das imagens consoante tempo
-    - Indicar o port no início do jogo ou ter algures uma indicação?!
      */
 
     private int portnumber;
@@ -76,27 +75,9 @@ public class Server {
     }
 
     private void register(){
-        setCurrentView(new RegisterView());
+        setCurrentView(new RegisterView(this));
+        start();
         show();
-        instructGame();
-    }
-
-    private void instructGame(){
-        setCurrentView(new InstructionsView());
-        show();
-        typeGame();
-    }
-
-    private void typeGame(){
-        setCurrentView(new GameView());
-        show();
-        endGame();
-    }
-
-    private void endGame(){
-        setCurrentView(new EndView());
-        show();
-        //close everything
     }
 
     public void start() {
@@ -116,6 +97,34 @@ public class Server {
 
     }
 
+    public boolean checkPlayersState(){
+        boolean allSet=true;
+        for (ClientConnections client: threadsMap.values()){
+            if(!client.isReadyToPlay()){
+                allSet=false;
+            }
+        }
+        return allSet;
+    }
+
+    /*private void instructGame(){
+        setCurrentView(new InstructionsView());
+        show();
+        typeGame();
+    }
+
+    private void typeGame(){
+        setCurrentView(new GameView());
+        show();
+        endGame();
+    }
+
+    private void endGame(){
+        setCurrentView(new EndView());
+        show();
+        //close everything
+    }*/
+
     private class ClientConnections implements Runnable{
 
         private Socket clientSocket;
@@ -124,12 +133,14 @@ public class Server {
 
         private String name;
         private int number;
+        private boolean readyToPlay;
 
         public ClientConnections(Socket clientSocket){
-            this.clientSocket=clientSocket;
             try {
+                this.clientSocket=clientSocket;
                 in=new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 out=new PrintWriter(clientSocket.getOutputStream(), true);
+                readyToPlay=false;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -147,13 +158,18 @@ public class Server {
             return number;
         }
 
+        public boolean isReadyToPlay(){
+            return readyToPlay;
+        }
+
         @Override
         public void run() {
             name=askName();
             number=askNumber();
-            while(true){
+            readyToPlay=true;
+            /*while(true){
                 read();
-            }
+            }*/
         }
 
         private String askName() {

@@ -1,16 +1,25 @@
 package org.academiadecodigo.speedTyper.View.Impl;
 
+import org.academiadecodigo.speedTyper.Server.Server;
 import org.academiadecodigo.speedTyper.View.AbstractView;
 
 public class RegisterView extends AbstractView {
 
-    public RegisterView(){
+    private Server server;
+
+    public RegisterView(Server server){
         super();
         super.setBackground("backgrounds/RegistrationBackground.png");
+        this.server=server;
     }
 
     @Override
     public void show() {
-        super.show();
+        while(!server.checkPlayersState()){
+            super.show();
+        }
+        setMoveNext(true);
     }
+
+
 }
