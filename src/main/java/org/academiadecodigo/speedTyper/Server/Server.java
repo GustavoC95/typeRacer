@@ -1,5 +1,6 @@
 package org.academiadecodigo.speedTyper.Server;
 
+import org.academiadecodigo.speedTyper.View.Impl.*;
 import org.academiadecodigo.speedTyper.View.View;
 
 import java.io.BufferedReader;
@@ -40,6 +41,8 @@ public class Server {
             e.printStackTrace();
         }
         threadsMap=new HashMap<>();
+
+        introduceGame();
     }
 
     public Map<String, ClientConnections> getThreadsMap() {
@@ -52,6 +55,48 @@ public class Server {
 
     public void setCurrentView(View currentView) {
         this.currentView = currentView;
+    }
+
+    private void show(){
+        while(!currentView.getMoveNext()){
+            currentView.show();
+        }
+    }
+
+    private void introduceGame(){
+        setCurrentView(new IntroductionView());
+        show();
+        initializeGame();
+    }
+
+    private void initializeGame(){
+        setCurrentView(new PresentationView());
+        show();
+        register();
+    }
+
+    private void register(){
+        setCurrentView(new RegisterView());
+        show();
+        instructGame();
+    }
+
+    private void instructGame(){
+        setCurrentView(new InstructionsView());
+        show();
+        typeGame();
+    }
+
+    private void typeGame(){
+        setCurrentView(new GameView());
+        show();
+        endGame();
+    }
+
+    private void endGame(){
+        setCurrentView(new EndView());
+        show();
+        //close everything
     }
 
     public void start() {

@@ -2,6 +2,7 @@ package org.academiadecodigo.speedTyper.View.Impl;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.speedTyper.View.AbstractView;
+import org.academiadecodigo.speedTyper.Waiter;
 
 public class IntroductionView extends AbstractView {
 
@@ -25,11 +26,7 @@ public class IntroductionView extends AbstractView {
         super.show();
         Gustavo.draw();
         Joana.draw();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Waiter.wait(2000);
         move();
     }
 
@@ -37,15 +34,12 @@ public class IntroductionView extends AbstractView {
         int moved=0;
 
         while(moved!=150){
-            try {
-                Thread.sleep(25);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            Waiter.wait(25);
             Joana.translate(0, -1);
             Gustavo.translate(0,-1);
             moved++;
         }
+        Waiter.wait(1000);
         //drum roll as our photos ascend
         super.setMoveNext(true);
     }

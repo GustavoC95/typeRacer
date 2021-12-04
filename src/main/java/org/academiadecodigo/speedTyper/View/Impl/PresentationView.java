@@ -13,7 +13,7 @@ public class PresentationView extends AbstractView {
     public void show(){
         super.show();
         try {
-            Thread.sleep(3000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
