@@ -1,10 +1,7 @@
 package org.academiadecodigo.speedTyper;
 
 
-import org.academiadecodigo.speedTyper.View.Impl.InstructionsView;
-import org.academiadecodigo.speedTyper.View.Impl.IntroductionView;
-import org.academiadecodigo.speedTyper.View.Impl.PresentationView;
-import org.academiadecodigo.speedTyper.View.Impl.RegisterView;
+import org.academiadecodigo.speedTyper.View.Impl.*;
 
 public class Main {
 
@@ -16,8 +13,10 @@ public class Main {
         //presentation.show();
         //RegisterView registration=new RegisterView();
         //registration.show();
-        InstructionsView instructions=new InstructionsView();
-        instructions.show();
+        //InstructionsView instructions=new InstructionsView();
+        //instructions.show();
+        GameView game=new GameView();
+        game.show();
 
     }
 
