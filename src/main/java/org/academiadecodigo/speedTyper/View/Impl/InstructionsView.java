@@ -1,6 +1,7 @@
 package org.academiadecodigo.speedTyper.View.Impl;
 
 import org.academiadecodigo.speedTyper.View.AbstractView;
+import org.academiadecodigo.speedTyper.Waiter;
 
 public class InstructionsView extends AbstractView {
 
@@ -27,4 +28,11 @@ public class InstructionsView extends AbstractView {
             instruction.grow(100,15);
 
     } }*/
+
+    @Override
+    public void show(){
+        super.show();
+        Waiter.wait(10000);
+        setMoveNext(true);
+    }
 }

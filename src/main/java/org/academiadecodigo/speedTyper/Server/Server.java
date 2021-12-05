@@ -78,6 +78,7 @@ public class Server {
         setCurrentView(new RegisterView(this));
         start();
         show();
+        instructGame();
     }
 
     public void start() {
@@ -107,13 +108,13 @@ public class Server {
         return allSet;
     }
 
-    /*private void instructGame(){
+    private void instructGame(){
         setCurrentView(new InstructionsView());
         show();
         typeGame();
     }
 
-    private void typeGame(){
+    /*private void typeGame(){
         setCurrentView(new GameView());
         show();
         endGame();
