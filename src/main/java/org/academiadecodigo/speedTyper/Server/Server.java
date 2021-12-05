@@ -18,7 +18,6 @@ public class Server {
 
     /*
     O que falta:
-    - Encadear tudo (wiring)
     - Fazer match entre seleção dos carros e os carros que aparecem no jogo
     - Comparação entre palavra escrita e frase
     - Contagem de tempo e comparação entre tempos
@@ -29,27 +28,28 @@ public class Server {
     private ServerSocket serverSocket;
     private Socket clientSocket;
     private Map<String,ClientConnections> threadsMap;
+    private ExecutorService myExecutor;
 
     private View currentView;
 
+    private boolean gameStarted;
+
     public Server(int portnumber) {
-        this.portnumber = portnumber;
         try {
+            this.portnumber = portnumber;
             serverSocket=new ServerSocket(portnumber);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         threadsMap=new HashMap<>();
+        gameStarted=false;
 
         introduceGame();
     }
 
-    public Map<String, ClientConnections> getThreadsMap() {
-        return threadsMap;
-    }
-
-    public View getCurrentView() {
-        return currentView;
+    public boolean isGameStarted() {
+        return gameStarted;
     }
 
     public void setCurrentView(View currentView) {
@@ -86,7 +86,7 @@ public class Server {
             while(true){
                 clientSocket= serverSocket.accept();
                 ClientConnections clientConnection=new ClientConnections(clientSocket);
-                ExecutorService myExecutor= Executors.newCachedThreadPool();
+                myExecutor= Executors.newCachedThreadPool();
                 myExecutor.submit(clientConnection);
                 if(!threadsMap.containsKey(clientConnection.getName())){
                     threadsMap.put(clientConnection.getName(),clientConnection);
@@ -114,8 +114,9 @@ public class Server {
         typeGame();
     }
 
-    /*private void typeGame(){
+    private void typeGame(){
         setCurrentView(new GameView());
+        gameStarted=true;
         show();
         endGame();
     }
@@ -123,8 +124,21 @@ public class Server {
     private void endGame(){
         setCurrentView(new EndView());
         show();
-        //close everything
-    }*/
+        close();
+    }
+
+    private void close(){
+        for(ClientConnections client: threadsMap.values()){
+            client.close();
+        }
+        myExecutor.shutdown();
+        try {
+            clientSocket.close();
+            serverSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private class ClientConnections implements Runnable{
 
@@ -168,9 +182,11 @@ public class Server {
             name=askName();
             number=askNumber();
             readyToPlay=true;
-            /*while(true){
-                read();
-            }*/
+            while(true){
+                if(isGameStarted()){
+                    read(); //-------------------ACRESCENTAR AQUI OS MÉTODOS DE COMPARAÇÃO E CONTAGEM
+                }
+            }
         }
 
         private String askName() {
@@ -213,6 +229,16 @@ public class Server {
                 }
             } catch (IOException e){
                 System.out.println(e.getMessage());
+            }
+        }
+
+        public void close(){
+            try {
+                in.close();
+                out.close();
+                clientSocket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
 

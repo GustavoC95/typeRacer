@@ -1,19 +1,25 @@
 package org.academiadecodigo.speedTyper.View.Impl;
 
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.speedTyper.View.AbstractView;
-import org.academiadecodigo.speedTyper.Waiter;
 
 public class PresentationView extends AbstractView {
 
     public PresentationView(){
-        super();
+        super.setMoveNext(false);
         super.setBackground("backgrounds/PresentationBackground.png");
     }
 
-    @Override
+    /*@Override
     public void show(){
         super.show();
-        Waiter.wait(5000);
-        setMoveNext(true);
-    }
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        super.setMoveNext(true);
+    }*/
+
 }
