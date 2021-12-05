@@ -5,7 +5,7 @@ import org.academiadecodigo.speedTyper.View.AbstractView;
 public class RegisterView extends AbstractView {
 
     public RegisterView(){
-        super.setMoveNext(false);
+        super();
         super.setBackground("backgrounds/RegistrationBackground.png");
     }
 

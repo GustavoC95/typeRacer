@@ -7,7 +7,7 @@ import org.academiadecodigo.speedTyper.View.AbstractView;
 public class PresentationView extends AbstractView {
 
     public PresentationView(){
-        super.setMoveNext(false);
+        super();
         super.setBackground("backgrounds/PresentationBackground.png");
     }
 

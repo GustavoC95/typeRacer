@@ -13,7 +13,7 @@ public class IntroductionView extends AbstractView {
     private final int JOANA_SIZE=369;
 
     public IntroductionView(){
-        super.setMoveNext(false);
+        super();
         super.setBackground("backgrounds/IntroductionBackground.png");
         background=super.getBackground();
         Gustavo=new Picture(background.getMaxX()- GUS_SIZE, background.getMaxY()-GUS_SIZE, "authors/Gustavo.png");
@@ -48,11 +48,6 @@ public class IntroductionView extends AbstractView {
         }
         //drum roll as our photos ascend
         super.setMoveNext(true);
-    }
-
-    @Override
-    public boolean getMoveNext() {
-        return super.getMoveNext();
     }
 
 }
