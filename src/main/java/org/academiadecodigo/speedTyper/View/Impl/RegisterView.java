@@ -1,4 +1,16 @@
 package org.academiadecodigo.speedTyper.View.Impl;
 
-public class RegisterView {
+import org.academiadecodigo.speedTyper.View.AbstractView;
+
+public class RegisterView extends AbstractView {
+
+    public RegisterView(){
+        super();
+        super.setBackground("backgrounds/RegistrationBackground.png");
+    }
+
+    @Override
+    public void show() {
+        super.show();
+    }
 }
