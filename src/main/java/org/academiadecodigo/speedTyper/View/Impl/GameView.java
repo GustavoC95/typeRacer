@@ -8,7 +8,7 @@ public class GameView extends AbstractView {
     private Picture[] cars;
 
     public GameView(){
-        super();
+        super.setMoveNext(false);
         super.setBackground("backgrounds/GameBackground.png");
 
         cars=new Picture[5];

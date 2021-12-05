@@ -13,7 +13,7 @@ public class IntroductionView extends AbstractView {
     private final int JOANA_SIZE=369;
 
     public IntroductionView(){
-        super();
+        super.setMoveNext(false);
         super.setBackground("backgrounds/IntroductionBackground.png");
         background=super.getBackground();
         Gustavo=new Picture(background.getMaxX()- GUS_SIZE, background.getMaxY()-GUS_SIZE, "authors/Gustavo.png");

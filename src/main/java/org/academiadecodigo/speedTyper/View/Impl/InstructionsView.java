@@ -7,7 +7,7 @@ public class InstructionsView extends AbstractView {
     //private Text[] instructions;
 
     public InstructionsView(){
-        super();
+        super.setMoveNext(false);
         super.setBackground("backgrounds/InstructionsWithTextEmbedded.png");
         //super.setBackground("InstructionsBackground.png");
 
