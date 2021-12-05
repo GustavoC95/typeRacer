@@ -1,6 +1,7 @@
 package org.academiadecodigo.speedTyper.Server;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
+import org.academiadecodigo.speedTyper.View.Cars.Cars;
 import org.academiadecodigo.speedTyper.View.Impl.*;
 import org.academiadecodigo.speedTyper.View.View;
 
@@ -19,7 +20,6 @@ public class Server {
 
     /*
     O que falta:
-    - Fazer match entre seleção dos carros e os carros que aparecem no jogo
     - Comparação entre palavra escrita e frase
     - Contagem de tempo e comparação entre tempos
     - Print dos nomes dos jogadores + translate das imagens consoante tempo
@@ -47,6 +47,10 @@ public class Server {
         gameStarted=false;
 
         introduceGame();
+    }
+
+    public Map<String, ClientConnections> getThreadsMap() {
+        return threadsMap;
     }
 
     public boolean isGameStarted() {
@@ -116,10 +120,20 @@ public class Server {
     }
 
     private void typeGame(){
-        setCurrentView(new GameView());
+        setCurrentView(new GameView(getCars()));
         gameStarted=true;
         show();
         endGame();
+    }
+
+    public String[] getCars(){
+        ClientConnections[] clientsArr= (ClientConnections[]) threadsMap.values().toArray();
+        String[] cars= new String[threadsMap.size()];
+
+        for (int i=0; i< cars.length; i++){
+            cars[i]=clientsArr[i].getCar();
+        }
+        return cars;
     }
 
     private void endGame(){
@@ -149,7 +163,7 @@ public class Server {
 
         private String name;
         private int number;
-        private Picture car;
+        private String car;
         private boolean readyToPlay;
 
         public ClientConnections(Socket clientSocket){
@@ -167,8 +181,8 @@ public class Server {
             return name;
         }
 
-        public int getNumber() {
-            return number;
+        public String getCar() {
+            return car;
         }
 
         public boolean isReadyToPlay(){
@@ -179,7 +193,7 @@ public class Server {
         public void run() {
             name=askName();
             number=askNumber();
-            getCar(number);
+            car= loadCar(number);
             readyToPlay=true;
             while(true){
                 if(isGameStarted()){
@@ -218,8 +232,14 @@ public class Server {
             return numberHere;
         }
 
-        public void getCar(int numberChosen){
-
+        public String loadCar(int numberChosen){
+            String src = null;
+            for (Cars car: Cars.values()){
+                if(numberChosen==car.getNumber()){
+                    src=car.getCarSrc();
+                }
+            }
+            return src;
         }
 
         public void read(){

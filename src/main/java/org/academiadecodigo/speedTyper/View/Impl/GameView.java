@@ -1,28 +1,27 @@
 package org.academiadecodigo.speedTyper.View.Impl;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
+import org.academiadecodigo.speedTyper.Server.Server;
 import org.academiadecodigo.speedTyper.View.AbstractView;
 
 public class GameView extends AbstractView {
 
     private Picture[] cars;
+    private String[] carsSrcs;
 
-    public GameView(){
+    public GameView(String[] carsSrcs){
         super();
         super.setBackground("backgrounds/GameBackground.png");
 
         cars=new Picture[5];
+        this.carsSrcs=carsSrcs;
         loadCars();
     }
 
     private void loadCars(){
-
-        cars[0]=new Picture(PADDING, 300, "cars/RedCar.png");
-        cars[1]=new Picture(PADDING, 390, "cars/YellowCar.png");
-        cars[2]=new Picture(PADDING, 480, "cars/BlueCar.png");
-        cars[3]=new Picture(PADDING, 570, "cars/GreenCar.png");
-        cars[4]=new Picture(PADDING, 660, "cars/PurpleCar.png");
-
+       for (int i=0; i< cars.length; i++){
+           cars[i]=new Picture(PADDING, 300+(i*90), carsSrcs[i]);
+       }
     }
 
     @Override
