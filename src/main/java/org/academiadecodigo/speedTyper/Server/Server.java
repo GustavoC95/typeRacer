@@ -1,5 +1,6 @@
 package org.academiadecodigo.speedTyper.Server;
 
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.speedTyper.View.Impl.*;
 import org.academiadecodigo.speedTyper.View.View;
 
@@ -148,6 +149,7 @@ public class Server {
 
         private String name;
         private int number;
+        private Picture car;
         private boolean readyToPlay;
 
         public ClientConnections(Socket clientSocket){
@@ -159,10 +161,6 @@ public class Server {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-
-        public Thread getThisThread(){
-            return Thread.currentThread();
         }
 
         public String getName() {
@@ -181,6 +179,7 @@ public class Server {
         public void run() {
             name=askName();
             number=askNumber();
+            getCar(number);
             readyToPlay=true;
             while(true){
                 if(isGameStarted()){
@@ -217,6 +216,10 @@ public class Server {
             }
 
             return numberHere;
+        }
+
+        public void getCar(int numberChosen){
+
         }
 
         public void read(){

@@ -8,7 +8,7 @@ public class RegisterView extends AbstractView {
     private Server server;
 
     public RegisterView(Server server){
-        super.setMoveNext(false);
+        super();
         super.setBackground("backgrounds/RegistrationBackground.png");
         this.server=server;
     }

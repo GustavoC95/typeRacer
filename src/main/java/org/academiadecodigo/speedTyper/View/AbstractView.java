@@ -6,7 +6,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public abstract class AbstractView implements View, KeyboardHandler {
+public abstract class AbstractView implements View {
 
     public final static int PADDING=10;
 
@@ -17,15 +17,7 @@ public abstract class AbstractView implements View, KeyboardHandler {
     private Keyboard keyboard;
 
     public AbstractView(){
-        //moveNext=false;
-
-        keyboard=new Keyboard(this);
-
-        KeyboardEvent right=new KeyboardEvent();
-        right.setKey(KeyboardEvent.KEY_RIGHT);
-        right.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(right);
-
+        moveNext=false;
     }
 
     public boolean getMoveNext() {
@@ -47,17 +39,5 @@ public abstract class AbstractView implements View, KeyboardHandler {
     @Override
     public void show(){
         background.draw();
-    }
-
-    @Override
-    public void keyPressed(KeyboardEvent keyboardEvent) {
-        if(keyboardEvent.getKey()==KeyboardEvent.KEY_RIGHT){
-            setMoveNext(true);
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyboardEvent keyboardEvent) {
-
     }
 }
